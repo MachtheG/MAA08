@@ -1,12 +1,15 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
-import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { StatusBadge } from "@/components/ui/Status";
 import { useContent } from "@/content/useContent";
+import { wajirImages } from "@/content/imagery";
 import { useLanguage } from "@/i18n/LanguageProvider";
+
+const delay = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
 
 export function VisionContent() {
   const { t } = useLanguage();
@@ -18,65 +21,64 @@ export function VisionContent() {
         kicker={t.ui.vision.kicker}
         title={t.ui.vision.title}
         intro={t.ui.vision.intro}
-        image="/images/desert-expanse.jpg"
-        imageAlt={t.ui.vision.imageAlt}
+        image={wajirImages.malaba.src}
+        imageAlt={wajirImages.malaba.alt}
+        imagePosition="50% 35%"
       />
 
-      <section className="bg-sand-50 py-12 sm:py-16 lg:py-20">
-        <Container width="wide">
-          <div className="mx-auto max-w-3xl">
-            <p className="text-base leading-relaxed text-ink-700 sm:text-lg">
-              {visionIntro}
-            </p>
-          </div>
+      <section className="bg-page py-section">
+        <Container>
+          <p data-reveal className="max-w-[44rem] font-display text-lead text-ink-800 lg:ml-[25%]">
+            {visionIntro}
+          </p>
 
-          <div className="mt-10 grid gap-5 sm:gap-6 lg:mt-14 lg:grid-cols-2">
+          {/* The priorities as the plan's own numbered clauses, one wide row
+              each; the facing column carries the specifics. */}
+          <ol className="mt-block">
             {visionPillars.map((p, i) => (
-              <Reveal key={p.id} as="article" delay={(i % 2) * 90}>
-                <div className="flex h-full flex-col rounded-2xl border border-line bg-sand-50 p-6 transition-shadow hover:shadow-md sm:p-8">
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="font-display text-4xl font-semibold leading-none text-ochre-400 sm:text-5xl">
-                      {p.number}
-                    </span>
-                    <StatusBadge status={p.status} />
-                  </div>
-                  <h2 className="mt-5 font-display text-xl font-semibold tracking-tight text-ink-900 sm:text-2xl">
-                    {p.title}
-                  </h2>
-                  <p className="mt-2 font-medium text-flag-green-dark">{p.promise}</p>
-                  <ul className="mt-5 space-y-3 border-t border-line pt-5">
-                    {p.points.map((pt, j) => {
-                      const isDraftMarker = pt.startsWith("[DRAFT") || pt.startsWith("[RASIMU");
-                      return (
-                        <li key={j} className="flex gap-3 text-sm leading-relaxed">
-                          <span
-                            aria-hidden="true"
-                            className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${
-                              isDraftMarker ? "bg-ochre-500" : "bg-flag-green"
-                            }`}
-                          />
-                          <span className={isDraftMarker ? "italic text-ink-500" : "text-ink-700"}>
-                            {pt}
-                          </span>
-                        </li>
-                      );
-                    })}
-                  </ul>
+              <li
+                key={p.id}
+                data-reveal
+                style={delay((i % 2) * 70)}
+                className={`grid gap-x-10 gap-y-5 border-t-[3px] border-ink-900 py-10 lg:grid-cols-12 lg:py-14`}
+              >
+                <span aria-hidden="true" className="font-display text-display leading-none text-figure tabular lg:col-span-2">
+                  {p.number}
+                </span>
+                <div className="lg:col-span-5">
+                  <h2 className="text-heading">{p.title}</h2>
+                  <p className="mt-4 font-display text-lead text-flag-green-dark">{p.promise}</p>
+                  <StatusBadge status={p.status} className="mt-5" />
                 </div>
-              </Reveal>
+                <ul className="space-y-3 lg:col-span-5 lg:pt-3">
+                  {p.points.map((pt, j) => {
+                    const isDraftMarker = pt.startsWith("[DRAFT") || pt.startsWith("[RASIMU");
+                    return (
+                      <li key={j} className="grid grid-cols-[1.25rem_minmax(0,1fr)] gap-2">
+                        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" className={`mt-[0.45em] ${isDraftMarker ? "text-ochre-600" : "text-flag-green"}`}>
+                          <path d="M2 7h10" stroke="currentColor" strokeWidth="3" />
+                        </svg>
+                        <span className={isDraftMarker ? "italic text-ink-600" : "text-ink-800"}>{pt}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
             ))}
-          </div>
+          </ol>
+        </Container>
+      </section>
 
-          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-line bg-sand-100 p-6 text-center sm:p-8 lg:mt-14">
-            <h2 className="font-display text-xl font-semibold text-ink-900 sm:text-2xl">
-              {t.ui.vision.helpHeading}
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-ink-600">{t.ui.vision.helpBody}</p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
-              <Button href="/get-involved" variant="gold">
+      <section data-surface="cover" className="bg-cover py-section text-sand-50">
+        <Container className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-x-10">
+          <div className="lg:col-span-7 lg:col-start-4">
+            <h2 data-reveal className="text-heading">{t.ui.vision.helpHeading}</h2>
+            <p data-reveal style={delay(80)} className="mt-5 max-w-measure text-lead text-sand-100">{t.ui.vision.helpBody}</p>
+            <div data-reveal style={delay(160)} className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button href="/get-involved" variant="secondary" onCover size="lg">
                 {t.ui.vision.helpCtaPriorities}
               </Button>
-              <Button href="/wards" variant="outline">
+              <Button href="/wards" variant="quiet" onCover>
                 {t.ui.vision.helpCtaCounty}
               </Button>
             </div>

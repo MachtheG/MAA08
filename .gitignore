@@ -42,3 +42,8 @@ next-env.d.ts
 # IDE
 .vscode/
 .idea/
+
+# Design review artifacts (screenshots, inspector output, decision-page state)
+.taste-skill/
+.impeccable/review/
+.impeccable/questions/

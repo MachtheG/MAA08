@@ -23,19 +23,17 @@ export function DonateWidget() {
   ];
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-sand-50 shadow-sm">
+    <div className="ruling overflow-hidden rounded-page bg-page text-ink-900">
       {/* Method tabs */}
-      <div className="grid grid-cols-2 border-b border-line" role="tablist" aria-label={d.methodAria}>
+      <div className="grid grid-cols-2 bg-page-alt p-1.5" role="tablist" aria-label={d.methodAria}>
         {tabs.map((m) => (
           <button
             key={m.id}
             role="tab"
             aria-selected={method === m.id}
             onClick={() => setMethod(m.id)}
-            className={`px-2 py-3.5 text-sm font-semibold transition-colors sm:px-4 ${
-              method === m.id
-                ? "border-b-2 border-flag-green bg-sand-50 text-flag-green-dark"
-                : "bg-sand-100 text-ink-500 hover:text-ink-800"
+            className={`min-h-12 rounded-control px-2 text-base font-bold transition-colors sm:px-4 ${
+              method === m.id ? "bg-ink-900 text-sand-50" : "text-ink-700 hover:bg-ink-900/8"
             }`}
           >
             {m.label}
@@ -43,10 +41,10 @@ export function DonateWidget() {
         ))}
       </div>
 
-      <div className="p-5 sm:p-7 lg:p-8">
+      <div className="p-5 sm:p-8 lg:p-10">
         {/* Amount selector */}
-        <p className="text-sm font-semibold text-ink-800">{d.chooseAmount}</p>
-        <div className="mt-3 flex flex-wrap gap-2">
+        <p className="font-display text-lead text-ink-900">{d.chooseAmount}</p>
+        <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-5">
           {amounts.map((a) => (
             <button
               key={a}
@@ -56,10 +54,10 @@ export function DonateWidget() {
                 setCustom("");
               }}
               aria-pressed={!custom && amount === a}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+              className={`min-h-12 rounded-control border-[1.5px] px-2 font-bold tabular transition-colors ${
                 !custom && amount === a
-                  ? "bg-flag-green text-sand-50"
-                  : "border border-line-strong text-ink-700 hover:bg-ink-900/5"
+                  ? "border-flag-green-dark bg-flag-green-dark text-sand-50"
+                  : "border-ink-900 text-ink-900 hover:bg-ink-900/8"
               }`}
             >
               {a.toLocaleString()}
@@ -73,21 +71,22 @@ export function DonateWidget() {
             onChange={(e) => setCustom(e.target.value)}
             placeholder={d.other}
             aria-label={d.customAria}
-            className="w-24 rounded-full border border-line-strong bg-sand-50 px-4 py-2 text-sm focus:border-flag-green focus:outline-none focus:ring-2 focus:ring-flag-green/25"
+            className="col-span-3 min-h-12 w-full rounded-control border-[1.5px] border-ink-900 bg-page px-3.5 font-bold tabular sm:col-span-5"
           />
         </div>
 
         {/* Method-specific UI */}
-        <div className="mt-7">
+        <div className="mt-8">
           {method === "mpesa" && <MpesaPanel amount={value} d={d} />}
           {method === "crypto" && <CryptoPanel amount={value} d={d} />}
         </div>
 
         {/* Backend flag */}
-        <div className="mt-6 flex items-start gap-3 rounded-xl border border-dashed border-flag-red/40 bg-flag-red/4 px-4 py-3 text-xs leading-relaxed text-ink-600">
-          <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-flag-red/15 font-bold text-flag-red">
-            !
-          </span>
+        <div role="note" className="mt-8 grid grid-cols-[1.5rem_minmax(0,1fr)] gap-3 bg-page-deep px-4 py-4 text-small text-ink-700">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" className="text-flag-red">
+            <path d="M11 3 20 19H2L11 3Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M11 9v4.5M11 15.5v1.5" stroke="currentColor" strokeWidth="2" />
+          </svg>
           <p>
             <strong className="text-ink-800">{d.notLiveTitle}</strong> {d.notLiveBody}
           </p>
@@ -100,42 +99,42 @@ export function DonateWidget() {
 function MpesaPanel({ amount, d }: { amount: number; d: DonateCopy }) {
   return (
     <div>
-      <div className="space-y-4 rounded-lg border border-ochre-400/30 bg-ochre-400/5 p-4">
+      <dl className="grid gap-4 bg-page-alt p-5 sm:grid-cols-2">
         <div>
-          <p className="text-sm font-semibold text-ink-800">{d.mpesaPaybill}</p>
-          <p className="mt-1 text-sm text-ink-600">Paybill Business No: 008008</p>
+          <dt className="text-small font-bold text-ink-700">{d.mpesaPaybill}</dt>
+          <dd className="mt-1 tabular text-ink-900">Paybill Business No: 008008</dd>
         </div>
         <div>
-          <p className="text-sm font-semibold text-ink-800">{d.mpesaAccount}</p>
-          <p className="mt-1 text-sm text-ink-600">Account Reference: MA-008</p>
+          <dt className="text-small font-bold text-ink-700">{d.mpesaAccount}</dt>
+          <dd className="mt-1 tabular text-ink-900">Account Reference: MA-008</dd>
         </div>
-      </div>
+      </dl>
 
-      <label htmlFor="mpesa-phone" className="mb-1.5 mt-5 block text-sm font-semibold text-ink-800">
+      <label htmlFor="mpesa-phone" className="mb-2 mt-6 block font-bold text-ink-900">
         {d.mpesaPhone}
       </label>
       <input
         id="mpesa-phone"
         type="tel"
         placeholder={d.mpesaPlaceholder}
-        className="w-full rounded-lg border border-line-strong bg-sand-50 px-3.5 py-3 focus:border-flag-green focus:outline-none focus:ring-2 focus:ring-flag-green/25"
+        className="min-h-12 w-full rounded-control border-[1.5px] border-ink-900 bg-page px-3.5 tabular"
       />
 
-      <div className="mt-4 grid grid-cols-2 gap-3">
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <button
           type="button"
-          className="rounded-full bg-flag-green px-4 py-3.5 text-sm font-semibold text-sand-50 shadow-sm transition-transform hover:-translate-y-0.5"
+          className="min-h-14 rounded-control bg-flag-red px-4 py-3 text-[1.0625rem] leading-snug font-bold text-sand-50 tabular transition-[background-color,transform] duration-(--duration-quick) hover:bg-[color-mix(in_oklab,var(--color-flag-red)_84%,var(--color-ink-900))] active:scale-[0.98]"
         >
           {d.stkPush} · KES {amount.toLocaleString()}
         </button>
         <button
           type="button"
-          className="rounded-full border border-flag-green bg-sand-50 px-4 py-3.5 text-sm font-semibold text-flag-green-dark transition-transform hover:-translate-y-0.5"
+          className="min-h-14 rounded-control border-2 border-ink-900 px-4 py-3 font-bold leading-snug text-ink-900 transition-[background-color,color,transform] duration-(--duration-quick) hover:bg-ink-900 hover:text-sand-50 active:scale-[0.98]"
         >
           {d.mpesaPrompt}
         </button>
       </div>
-      <p className="mt-3 text-center text-sm text-ink-500">{d.stkNote}</p>
+      <p className="mt-3 text-small text-ink-700">{d.stkNote}</p>
     </div>
   );
 }
@@ -143,7 +142,7 @@ function MpesaPanel({ amount, d }: { amount: number; d: DonateCopy }) {
 function CryptoPanel({ amount, d }: { amount: number; d: DonateCopy }) {
   return (
     <div>
-      <label htmlFor="crypto-address" className="mb-1.5 block text-sm font-semibold text-ink-800">
+      <label htmlFor="crypto-address" className="mb-2 block font-bold text-ink-900">
         {d.cryptoAddress}
       </label>
       <input
@@ -152,15 +151,15 @@ function CryptoPanel({ amount, d }: { amount: number; d: DonateCopy }) {
         placeholder="0x... or 1... or bc1..."
         readOnly
         value="[Campaign wallet address to be configured]"
-        className="w-full rounded-lg border border-line-strong bg-sand-100 px-3.5 py-3 text-sm text-ink-500"
+        className="min-h-12 w-full rounded-control border-[1.5px] border-ink-500 bg-page-alt px-3.5 text-small text-ink-700"
       />
       <button
         type="button"
-        className="mt-4 w-full rounded-full border-2 border-flag-green bg-sand-50 px-6 py-3.5 text-base font-semibold text-flag-green-dark shadow-sm transition-transform hover:-translate-y-0.5"
+        className="mt-4 min-h-14 w-full rounded-control border-2 border-ink-900 px-6 font-bold text-ink-900 tabular transition-[background-color,color,transform] duration-(--duration-quick) hover:bg-ink-900 hover:text-sand-50 active:scale-[0.98]"
       >
         Send Crypto · KES {amount.toLocaleString()}
       </button>
-      <p className="mt-3 text-center text-sm text-ink-500">{d.cryptoNote}</p>
+      <p className="mt-3 text-small text-ink-700">{d.cryptoNote}</p>
     </div>
   );
 }

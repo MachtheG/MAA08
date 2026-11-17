@@ -1,133 +1,120 @@
 "use client";
 
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { useContent } from "@/content/useContent";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { Plate } from "@/components/ui/Plate";
+import { ElectionCountdown } from "@/components/ElectionCountdown";
 
 /**
- * Home hero.
+ * Home hero: the statesman's passport laid open on the land.
  *
- * Background: a real landscape photograph (acacia.jpg — see
- * public/images/CREDITS.md; it is Unsplash stock, not a photo of Wajir
- * itself, so it should be swapped for campaign photography of the county
- * before launch), not a blur or a gradient wash. Overlay is a single flat
- * scrim, strong enough to hold the type legible without softening the
- * photo into mush — the point is a real place, not atmosphere.
+ * The ground is a real photograph of Wajir — giraffes at dusk on the edge of
+ * town (Suleiman Saney, CC BY-SA 4.0) — printed in the cover's two inks. On it
+ * rests the portrait page: passport photo, the name in engraved type, the
+ * promise stamped in red, the two actions, and the countdown printed along
+ * the page foot like a validity line.
  */
 export function HomeHero() {
   const { t } = useLanguage();
   const { profile } = useContent();
+  const [first, ...rest] = t.hero.name.split(" ");
 
   return (
-    <section className="relative isolate overflow-hidden bg-ink-900 text-sand-50">
-      <Image
-        src="/images/acacia.jpg"
-        alt=""
-        aria-hidden="true"
-        fill
-        priority
-        sizes="100vw"
-        quality={90}
-        className="object-cover object-[center_65%]"
-      />
-      {/* Flat scrim, strongest where the type sits, clear toward the horizon */}
-      <div
-        className="absolute inset-0 bg-linear-to-t from-ink-900 via-ink-900/75 to-ink-900/25"
-        aria-hidden="true"
-      />
+    <section data-surface="cover" className="relative isolate overflow-hidden bg-cover">
+      {/* The land. A band on phones, the whole ground from lg up. */}
+      <div className="relative h-[42svh] min-h-64 lg:absolute lg:inset-0 lg:h-auto">
+        <Image
+          src="/images/wajir/giraffes-dusk.jpg"
+          alt=""
+          fill
+          loading="eager"
+          fetchPriority="high"
+          quality={60}
+          sizes="100vw"
+          className="object-cover object-[46%_40%] lg:object-[100%_45%]"
+        />
+      </div>
 
-      <Container className="relative py-14 sm:py-20 lg:py-28">
-        <div className="grid items-end gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-          {/* Copy */}
-          <div className="max-w-2xl">
-            <p className="flex items-center gap-2.5 border-l-2 border-ochre-400 pl-3 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-sand-100 sm:text-xs sm:tracking-[0.16em]">
-              {t.hero.kicker}
-            </p>
-
-            <h1 className="mt-5 font-display font-semibold tracking-tight text-sand-50 sm:mt-6">
-              <span
-                className="block text-balance"
-                style={{
-                  fontSize: "var(--text-mega)",
-                  lineHeight: "var(--text-mega--line-height)",
-                }}
+      <Container className="relative -mt-20 pb-10 sm:-mt-28 lg:mt-0 lg:grid lg:min-h-[min(calc(100svh-7.5rem),58rem)] lg:grid-cols-12 lg:items-center lg:py-10">
+        <article className="ruling relative rounded-page bg-page text-ink-900 lg:col-span-10 lg:col-start-3 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] xl:col-span-8 xl:col-start-5">
+          {/* Desktop: the passport photograph takes the page's full height,
+              a third of its width — the man before the text about him. */}
+          <div className="relative hidden overflow-hidden rounded-l-page bg-page-deep lg:block">
+            <Image
+              src="/images/plates/affey-01.jpg"
+              alt={t.ui.home.portraitAlt}
+              fill
+              loading="eager"
+              quality={72}
+              sizes="(min-width: 1024px) 30vw, 1px"
+              className="settle object-cover object-[50%_30%]"
+            />
+          </div>
+          <div className="flex flex-col">
+          <div className="flex-1 px-5 pb-8 pt-6 sm:px-9 sm:pt-9 lg:px-11 lg:pb-9 lg:pt-11">
+            <div className="grid grid-cols-[6rem_minmax(0,1fr)] items-start gap-x-5 gap-y-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-x-8 lg:grid-cols-1">
+              <Plate
+                src="/images/plates/affey-01.jpg"
+                alt={t.ui.home.portraitAlt}
+                ratio="4/5"
+                eager
+                sizes="(max-width: 640px) 96px, 168px"
+                className="row-span-2 self-start lg:hidden"
+                imageClassName="settle"
+              />
+              <h1 className="text-[clamp(1.875rem,0.9rem+5vw,5.5rem)] leading-[0.98] tracking-[-0.02em] text-ink-900">
+                <span className="mask-line" style={{ "--line-delay": "80ms" } as CSSProperties}>
+                  <span>{first}</span>
+                </span>
+                <span className="mask-line" style={{ "--line-delay": "170ms" } as CSSProperties}>
+                  <span>{rest.join(" ")}</span>
+                </span>
+                <span className="mask-line mt-3 font-display text-lead tracking-normal text-flag-green-dark" style={{ "--line-delay": "280ms" } as CSSProperties}>
+                  <span>{t.hero.forOffice}</span>
+                </span>
+              </h1>
+              <p
+                className="enter col-span-2 max-w-[38rem] text-[1.0625rem] text-ink-700 sm:col-span-1 sm:text-[1.1875rem]"
+                style={{ "--enter-delay": "320ms" } as CSSProperties}
               >
-                {t.hero.name}
-              </span>
-              <span className="mt-3 block font-display text-xl font-medium italic text-ochre-300 sm:mt-4 sm:text-3xl">
-                {t.hero.forOffice}
-              </span>
-            </h1>
-
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-sand-100/90 sm:mt-7 sm:text-lg">
-              {t.hero.lead}
-            </p>
-
-            {/* Campaign slogan — a solid card, not a glass pill */}
-            <div className="mt-5 inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 border-l-2 border-ochre-400 bg-ink-900/60 py-2.5 pl-3.5 pr-4 text-sm sm:mt-6">
-              <span className="font-semibold text-ochre-300">
-                {t.ui.home.centralPromise}
-              </span>
-              <span className="text-sand-100">{profile.slogan.value}</span>
+                {t.hero.lead}
+              </p>
             </div>
 
-            <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center">
-              <Button
-                href="/vision"
-                variant="gold"
-                size="lg"
-                className="w-full sm:w-auto"
+            {/* The promise, stamped onto the page — the hero's signature moment. */}
+            <div className="mt-7 flex flex-wrap items-end justify-between gap-x-8 gap-y-8">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button href="/get-involved#donate" size="lg">
+                  {t.nav.donate}
+                </Button>
+                <Button href="/record" variant="secondary" size="lg">
+                  {t.hero.ctaPrimary}
+                </Button>
+              </div>
+              <div
+                className="enter-stamp relative ml-auto mr-1 inline-flex max-w-[15rem] flex-col px-5 pb-4 pt-3 text-stamp-red"
+                style={{ "--stamp-tilt": "-6deg", "--enter-delay": "650ms" } as CSSProperties}
               >
-                {t.hero.ctaPrimary}
-              </Button>
-              <Button
-                href="/get-involved"
-                size="lg"
-                variant="outline"
-                className="w-full border-sand-50/40 text-sand-50 hover:bg-sand-50/10 sm:w-auto"
-              >
-                {t.hero.ctaSecondary}
-              </Button>
+                <span aria-hidden="true" className="ink pointer-events-none absolute inset-0 rounded-stamp border-[3px] border-current" />
+                <span className="text-small font-bold">{t.ui.home.centralPromise}</span>
+                <span className="ink mt-1 border-t-2 border-current pt-2 font-display text-[clamp(1.625rem,1.3rem+1.3vw,2.25rem)] leading-[1.05]">
+                  {profile.slogan.value}
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Photograph — capped so it renders at ~native resolution */}
-          <figure className="relative mx-auto w-full max-w-120 lg:mx-0">
-            <div className="relative aspect-video overflow-hidden rounded-lg ring-1 ring-sand-50/25 shadow-2xl">
-              <Image
-                src="/images/MohamedA04.jpeg"
-                alt={t.ui.home.heroPhotoAlt}
-                fill
-                priority
-                quality={90}
-                sizes="(max-width: 1024px) 92vw, 30rem"
-                className="object-cover object-center"
-              />
-            </div>
-            {/* Flag rule under the frame */}
-            <span
-              aria-hidden="true"
-              className="mt-3 block h-1 w-24 bg-linear-to-r from-flag-black via-flag-red to-flag-green"
-            />
-            <figcaption className="mt-2.5 text-sm text-sand-100/70">
-              {t.ui.home.heroPhotoCaption}
-            </figcaption>
-          </figure>
-        </div>
-
-        {/* At-a-glance strip */}
-        <dl className="mt-12 grid gap-px overflow-hidden border border-sand-50/20 bg-sand-50/15 sm:mt-14 sm:grid-cols-3">
-          {t.credibility.items.map((item, i) => (
-            <div key={i} className="bg-ink-900/70 px-5 py-5">
-              <dt className="font-display text-2xl font-semibold text-ochre-300 sm:text-3xl">
-                {item.value}
-              </dt>
-              <dd className="mt-1 text-sm text-sand-100/80">{item.label}</dd>
-            </div>
-          ))}
-        </dl>
+          {/* Page foot: the validity line, with the campaign named as the issuer. */}
+          <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3 rounded-b-page bg-page-alt px-5 py-5 sm:px-9 lg:rounded-bl-none lg:px-11">
+            <ElectionCountdown />
+            <p className="text-small font-bold text-text-muted">{t.hero.kicker}</p>
+          </div>
+          </div>
+        </article>
       </Container>
     </section>
   );

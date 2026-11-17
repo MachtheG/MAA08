@@ -7,7 +7,7 @@ export function SkipLink() {
   return (
     <a
       href="#main"
-      className="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:left-4 focus:top-4 focus:rounded-md focus:bg-ink-900 focus:px-4 focus:py-2 focus:text-sand-50"
+      className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-control focus:bg-ink-900 focus:px-5 focus:py-3 focus:font-bold focus:text-sand-50"
     >
       {t.ui.footer.skipToContent}
     </a>

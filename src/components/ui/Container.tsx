@@ -1,11 +1,12 @@
 import { type ElementType, type ReactNode } from "react";
 
 const widths = {
-  default: "max-w-6xl",
-  wide: "max-w-7xl",
-  prose: "max-w-3xl",
+  default: "max-w-page",
+  wide: "max-w-page",
+  prose: "max-w-measure",
 } as const;
 
+/** The page frame: one pair of equal outer margins at every width. */
 export function Container({
   children,
   as: As = "div",
@@ -18,7 +19,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <As className={`mx-auto w-full px-5 sm:px-8 ${widths[width]} ${className}`}>
+    <As className={`mx-auto w-full px-gutter ${widths[width]} ${className}`}>
       {children}
     </As>
   );

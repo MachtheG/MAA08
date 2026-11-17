@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Wajir Horizon — first viewport sketch</title>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--sand:#f8f4ec;--sand1:#f1ebdf;--ink:#16130f;--deep:#063c2b;--green:#0d6a4c;--red:#a52a1e;--ochre:#d9a94f;--ochre3:#e6c583}
+*{box-sizing:border-box}
+body{margin:0;width:1440px;height:900px;overflow:hidden;background:var(--sand1);color:var(--ink);font-family:'Atkinson Hyperlegible Next',sans-serif}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 64px}
+.brand{display:flex;gap:14px;align-items:center;font-family:'Young Serif';font-size:22px}.coa{width:38px;height:38px;background:#e6dcc9}
+.links{display:flex;gap:30px;font-size:15px}.r{display:flex;gap:14px;align-items:center;font-size:14px}.donate{background:var(--red);color:var(--sand);padding:11px 22px;font-weight:700}
+.sky{height:470px;padding:40px 64px 0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:28px}
+h1{margin:0;font-family:'Young Serif';font-weight:400;font-size:132px;line-height:.92;letter-spacing:-.02em}
+.office{margin-top:10px;font-family:'Young Serif';font-size:32px;color:#4f463a}
+.horizon{height:3px;background:var(--ink);position:relative}
+.horizon span{position:absolute;right:64px;top:-58px;font-family:'Young Serif';font-size:40px;color:var(--green)}
+.land{height:351px;position:relative;background:var(--deep)}
+.land::before{content:"";position:absolute;inset:0;background:url('../../../public/images/acacia.jpg') center 70%/cover;filter:grayscale(1) contrast(1.1);mix-blend-mode:luminosity;opacity:.55}
+.land::after{content:"";position:absolute;inset:0;background:var(--ochre);mix-blend-mode:multiply;opacity:.35}
+.row{position:relative;z-index:1;display:flex;gap:16px;padding:40px 64px}
+.row a{padding:18px 30px;font-weight:700;font-size:18px}.c1{background:var(--red);color:var(--sand)}.c2{border:2px solid var(--sand);color:var(--sand)}
+.count{position:absolute;z-index:1;right:64px;bottom:40px;color:var(--sand);text-align:right}
+.count b{display:block;font-family:'Young Serif';font-size:88px;font-weight:400;line-height:1;color:var(--ochre3)}
+</style>
+</head>
+<body>
+<nav><div class="brand"><span class="coa"></span>Mohamed Abdi Affey</div>
+<div class="links"><span>The Story</span><span>Vision for Wajir</span><span>Record</span><span>Wajir County</span><span>News &amp; Events</span><span>Get Involved</span></div>
+<div class="r"><span>EN · SW · SO</span><span class="donate">Donate</span></div></nav>
+<section class="sky"><h1>Mohamed Abdi Affey</h1><div class="office">for Governor of Wajir County</div></section>
+<div class="horizon"><span>Wajir First, Always.</span></div>
+<section class="land"><div class="row"><a class="c1">Donate</a><a class="c2">Explore the record</a></div>
+<div class="count"><b>266</b>Days · Tuesday, 10 August 2027</div></section>
+</body>
+</html>

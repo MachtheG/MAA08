@@ -1,0 +1,99 @@
+/* =============================================================
+   AFFEY — design tokens. The single source of truth.
+
+   Direction: "The Envoy's Passport" — a deep-green cover board holding sand
+   passport pages, ink type, and the record stamped in red and green ink.
+
+   COLOUR LOCK: the hues below are the campaign's locked palette. Only tints,
+   shades and alpha variants of them may be added; never a new hue. The one
+   derived shade so far is ochre-700 (ochre-600 mixed 30% toward ink-900),
+   added because no locked ochre passes AA for small text on sand.
+   Component code must reference these tokens, never a raw colour value.
+   ============================================================= */
+
+@theme {
+  /* --- Locked palette -------------------------------------------------- */
+  --color-sand-50: #f8f4ec;
+  --color-sand-100: #f1ebdf;
+  --color-sand-200: #e6dcc9;
+  --color-sand-300: #d6c7a8;
+  --color-sand-400: #c2ad87;
+
+  --color-ink-900: #16130f;
+  --color-ink-800: #221d17;
+  --color-ink-700: #362f26;
+  --color-ink-600: #4f463a;
+  --color-ink-500: #6b6153;
+  --color-ink-400: #8c8272;
+  --color-ink-300: #aba08d;
+
+  --color-flag-green: #0d6a4c;
+  --color-flag-green-dark: #084a34;
+  --color-flag-green-deep: #063c2b;
+  --color-flag-red: #a52a1e;
+  --color-flag-black: #14110d;
+
+  --color-ochre-300: #e6c583;
+  --color-ochre-400: #d9a94f;
+  --color-ochre-500: #c68a2a;
+  --color-ochre-600: #a56d1c;
+  /* Derived shade (see header). 6.3:1 on sand-50, 5.1:1 on sand-200. */
+  --color-ochre-700: #7a5218;
+
+  /* Alpha variants of ink, for rules that must read on any sand tone. */
+  --color-line: rgb(22 19 15 / 0.14);
+  --color-line-strong: rgb(22 19 15 / 0.28);
+
+  /* --- Roles (what the components use) -------------------------------- */
+  --color-cover: var(--color-flag-green-deep); /* passport cover board   */
+  --color-page: var(--color-sand-50); /* a passport page              */
+  --color-page-alt: var(--color-sand-100); /* the facing page         */
+  --color-page-deep: var(--color-sand-200); /* tab, well, inset       */
+  --color-text: var(--color-ink-900);
+  --color-text-muted: var(--color-ink-600); /* ≥7.7:1 on every sand   */
+  --color-action: var(--color-flag-red); /* Donate, and nothing else    */
+  --color-stamp-red: var(--color-flag-red);
+  --color-stamp-green: var(--color-flag-green);
+  --color-figure: var(--color-ochre-700); /* dates & figures on sand    */
+  --color-figure-on-cover: var(--color-ochre-300); /* … on the cover    */
+  --color-focus: var(--color-flag-green);
+  --color-focus-on-cover: var(--color-ochre-300);
+
+  /* --- Type ------------------------------------------------------------ */
+  --font-display: var(--font-prata), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-atkinson), "Segoe UI", system-ui, sans-serif;
+
+  /* Five sizes do all the visible work. Fluid between 360px and 1440px. */
+  --text-display: clamp(2.5rem, 1.6rem + 4vw, 6rem); /* the name, titles */
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.02em;
+  --text-heading: clamp(1.875rem, 1.4rem + 2.1vw, 3.25rem); /* sections */
+  --text-heading--line-height: 1.06;
+  --text-heading--letter-spacing: -0.015em;
+  --text-lead: clamp(1.1875rem, 1.1rem + 0.45vw, 1.4375rem); /* titles, intros */
+  --text-lead--line-height: 1.42;
+  --text-body: 1.0625rem; /* 17px — readable outdoors on a small phone */
+  --text-body--line-height: 1.62;
+  --text-small: 0.875rem; /* captions, labels; the floor is 13px */
+  --text-small--line-height: 1.5;
+
+  /* --- Space & frame --------------------------------------------------- */
+  --spacing-gutter: clamp(1rem, 0.4rem + 2.6vw, 3rem); /* outer margin   */
+  --spacing-section: clamp(4.5rem, 2.9rem + 7vw, 10rem); /* between sections */
+  --spacing-block: clamp(2rem, 1.5rem + 2.2vw, 3.5rem); /* inside a section */
+  --container-page: 78rem; /* 1248px text frame                          */
+  --container-measure: 40rem; /* ≈68 characters of body text            */
+
+  /* --- Corners: book page, rubber stamp, control ------------------------- */
+  --radius-page: clamp(0.625rem, 0.4rem + 1vw, 1rem);
+  --radius-stamp: 0.625rem;
+  --radius-control: 0.25rem;
+
+  /* --- Motion: calm, deliberate, never bouncy --------------------------- */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-quick: 160ms;
+  --duration-base: 420ms;
+  --duration-slow: 640ms;
+}

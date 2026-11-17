@@ -1,188 +1,223 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { HomeHero } from "@/components/home/HomeHero";
-import { ElectionCountdown } from "@/components/ElectionCountdown";
 import { Container } from "@/components/ui/Container";
-import { Kicker } from "@/components/ui/Kicker";
 import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/Reveal";
-import { PhotoSlot } from "@/components/ui/PhotoSlot";
+import { Plate } from "@/components/ui/Plate";
+import { SectionHead } from "@/components/ui/SectionHead";
+import { Stamp } from "@/components/ui/Stamp";
 import { StatusBadge } from "@/components/ui/Status";
 import { useContent } from "@/content/useContent";
+import { wajirImages } from "@/content/imagery";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export function HomeContent() {
   return (
     <>
       <HomeHero />
-      <CountdownSection />
+      <Milestones />
+      <LandBand />
       <VisionTeaser />
       <StoryTeaser />
       <PullQuote />
-      <CtaBand />
+      <CtaClose />
     </>
   );
 }
 
+const delay = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
+
 /* --------------------------------------------------------------- */
 
-function CountdownSection() {
-  return (
-    <section className="border-b border-line bg-sand-100 py-12 sm:py-16">
-      <Container>
-        <div className="mx-auto max-w-2xl">
-          <Reveal>
-            <ElectionCountdown />
-          </Reveal>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function VisionTeaser() {
+/**
+ * The visa page: the record stamped in order, on one line that runs from
+ * the first stamp to "Today" — so the visitor always sees where now is.
+ */
+function Milestones() {
   const { t } = useLanguage();
-  const { visionPillars } = useContent();
-  const featured = visionPillars.slice(0, 3);
+  const items = t.credibility.items;
+  const inks = ["red", "green", "red"] as const;
+  const tilts = [-5, 3, -2];
 
   return (
-    <section className="bg-sand-50 bg-topo py-16 sm:py-20 lg:py-28">
+    <section className="ruling bg-page py-section">
       <Container>
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-2xl">
-            <Kicker>{t.ui.home.visionKicker}</Kicker>
-            <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight text-balance text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.05]">
-              {t.ui.home.visionHeading}
-            </h2>
-          </div>
-          <Button href="/vision" variant="outline" className="shrink-0 self-start sm:self-auto">
-            {t.ui.home.seeAllPriorities}
-          </Button>
-        </div>
+        <SectionHead title={t.credibility.heading} />
 
-        <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-ink-500">
-          <StatusBadge status="draft" />
-          <span>{t.ui.home.draftNotice}</span>
-        </div>
+        {/* One record line through every stamp, ending at home: the last
+            entry is today's, in green, and the line runs on to the date. */}
+        <ol className="relative mt-block grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:ml-[25%] lg:grid-cols-4">
+          <span aria-hidden="true" className="absolute bottom-0 left-[1.4rem] top-0 w-[3px] bg-ink-900/15 lg:bottom-auto lg:left-0 lg:right-0 lg:top-[3.4rem] lg:h-[3px] lg:w-auto" />
+          {items.map((item, i) => {
+            const year = /^\d{4}$/.test(item.value) ? Number(item.value) : undefined;
+            return (
+              <li key={item.value} className="relative pl-12 lg:pl-0">
+                <Stamp figure={item.value} count={year} ink={inks[i % 3]} tilt={tilts[i % 3]} delay={i * 140} className="bg-page">
+                  {item.label}
+                </Stamp>
+              </li>
+            );
+          })}
+          <li className="relative pl-12 lg:pl-0">
+            <Stamp figure={t.timeline.presentLabel} ink="green" tilt={4} delay={items.length * 140} className="bg-page">
+              {t.hero.forOffice}
+            </Stamp>
+          </li>
+        </ol>
 
-        <div className="mt-10 grid gap-5 sm:gap-6 md:grid-cols-3 lg:mt-12">
-          {featured.map((p, i) => (
-            <Reveal key={p.id} as="article" delay={i * 90}>
-              <Link
-                href="/vision"
-                className="group flex h-full flex-col rounded-2xl border border-line bg-sand-50 p-6 transition-all hover:-translate-y-1 hover:border-flag-green/40 hover:shadow-lg sm:p-7"
-              >
-                <span className="font-display text-4xl font-semibold text-ochre-400">
-                  {p.number}
-                </span>
-                <h3 className="mt-4 font-display text-xl font-semibold text-ink-900">
-                  {p.title}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-600">
-                  {p.promise}
-                </p>
-                <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-flag-green-dark">
-                  {t.ui.home.readMore}
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
-                </span>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function StoryTeaser() {
-  const { t } = useLanguage();
-  const { storyIntro } = useContent();
-
-  return (
-    <section className="border-y border-line bg-sand-100 py-16 sm:py-20 lg:py-28">
-      <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <Reveal className="order-2 lg:order-1">
-            <Kicker tone="ochre">{t.ui.home.storyKicker}</Kicker>
-            <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight text-balance text-ink-900 sm:text-4xl lg:text-[2.5rem] lg:leading-[1.08]">
-              {t.ui.home.storyHeading}
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-ink-700 sm:mt-6 sm:text-lg">
-              {storyIntro}
-            </p>
-            <div className="mt-7 sm:mt-8">
-              <Button href="/story">{t.ui.home.readFullStory}</Button>
-            </div>
-          </Reveal>
-          <Reveal className="order-1 lg:order-2" delay={120}>
-            <PhotoSlot
-              src="/images/MohamedA01.jpg"
-              alt={t.ui.home.portraitAlt}
-              caption={t.ui.home.portraitCaption}
-              ratio="1/1"
-              className="mx-auto w-full max-w-sm shadow-xl sm:max-w-md"
-            />
-          </Reveal>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function PullQuote() {
-  const { t } = useLanguage();
-  return (
-    <section className="relative overflow-hidden bg-flag-green-deep py-16 text-sand-50 sm:py-20 lg:py-28">
-      <div className="absolute inset-0 bg-contour opacity-60" aria-hidden="true" />
-      <Container width="prose" className="relative text-center">
-        <span className="font-display text-6xl leading-none text-ochre-300" aria-hidden="true">
-          &ldquo;
-        </span>
-        <blockquote className="mt-2 font-display text-xl font-medium leading-snug text-balance sm:text-2xl lg:text-[2rem] lg:leading-[1.25]">
-          {t.ui.home.quote}
-        </blockquote>
-        <p className="mt-6 text-sm uppercase tracking-[0.16em] text-sand-100/70">
-          <span className="italic normal-case tracking-normal text-ochre-200">
-            {t.ui.home.quoteAttribution}
-          </span>
+        <p data-reveal style={delay(620)} className="mt-10 flex items-center justify-end gap-3 text-right font-display text-lead text-flag-green-dark lg:ml-[25%]">
+          <span aria-hidden="true" className="h-[3px] w-12 bg-flag-green" />
+          <time dateTime="2027-08-10">{t.ui.countdown.dateLine}</time>
         </p>
       </Container>
     </section>
   );
 }
 
-function CtaBand() {
-  const { t } = useLanguage();
+/** One full-width rest: the land itself, Malaba Hill in Wajir North. */
+function LandBand() {
   return (
-    <section className="bg-sand-50 py-16 sm:py-20 lg:py-24">
+    <section data-reveal aria-hidden="true" className="relative h-[46svh] min-h-64 overflow-hidden bg-cover sm:h-[60svh]">
+      <Image
+        src="/images/wajir/malaba-hill.jpg"
+        alt=""
+        fill
+        quality={60}
+        sizes="100vw"
+        className="land-photo object-cover object-[50%_40%]"
+      />
+    </section>
+  );
+}
+
+/** Priorities as an editorial ordered list, one wide row each. */
+function VisionTeaser() {
+  const { t } = useLanguage();
+  const { visionPillars } = useContent();
+  const featured = visionPillars.slice(0, 3);
+
+  return (
+    <section className="bg-page py-section">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl bg-ink-900 px-6 py-10 text-sand-50 sm:px-10 sm:py-14 lg:px-14">
-          <div className="absolute inset-0 bg-topo opacity-[0.15]" aria-hidden="true" />
-          <div className="relative grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-center">
-            <div>
-              <h2 className="font-display text-2xl font-semibold tracking-tight text-balance sm:text-3xl lg:text-4xl">
-                {t.ui.home.ctaHeading}
-              </h2>
-              <p className="mt-4 max-w-xl text-base text-sand-100/85 sm:text-lg">
-                {t.ui.home.ctaBody}
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <Button href="/get-involved" variant="gold" size="lg" className="w-full">
-                {t.ui.home.ctaPrimary}
-              </Button>
-              <Button
-                href="/get-involved#donate"
-                size="lg"
-                variant="outline"
-                className="w-full border-sand-50/40 text-sand-50 hover:bg-sand-50/10"
+        <SectionHead
+          label={t.ui.home.visionKicker}
+          title={t.ui.home.visionHeading}
+          aside={
+            <>
+              <StatusBadge status="draft" />
+              <span className="text-small text-text-muted">{t.ui.home.draftNotice}</span>
+            </>
+          }
+        />
+
+        <ol className="mt-block lg:ml-[25%]">
+          {featured.map((p, i) => (
+            <li key={p.id} data-reveal style={delay(i * 90)} className="border-t-[3px] border-ink-900 first:border-t-[3px]">
+              <Link
+                href="/vision"
+                className="group grid grid-cols-[4.5rem_minmax(0,1fr)] gap-x-5 gap-y-2 py-8 sm:grid-cols-[7rem_minmax(0,1fr)_auto] sm:items-baseline sm:gap-x-8"
               >
-                {t.ui.home.ctaSecondary}
-              </Button>
+                <span aria-hidden="true" className="row-span-2 font-display text-heading leading-none text-figure tabular sm:row-span-1">
+                  {p.number}
+                </span>
+                <span>
+                  <span className="block font-display text-lead text-ink-900 transition-colors group-hover:text-flag-green-dark">
+                    {p.title}
+                  </span>
+                  <span className="mt-2 block max-w-measure text-text-muted">{p.promise}</span>
+                </span>
+                <span className="col-start-2 inline-flex items-center gap-2 font-bold text-flag-green-dark sm:col-start-auto">
+                  {t.ui.home.readMore}
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="transition-transform duration-(--duration-base) ease-(--ease-out-quart) group-hover:translate-x-1">
+                    <path d="M3 9h11M10 4.5 14.5 9 10 13.5" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+        <div className="border-t-[3px] border-ink-900 pt-8 lg:ml-[25%]">
+          <Button href="/vision" variant="secondary">
+            {t.ui.home.seeAllPriorities.replace(/\s*→$/, "")}
+          </Button>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/** The facing page: the story told beside the candidate among Wajir's young people. */
+function StoryTeaser() {
+  const { t } = useLanguage();
+  const { storyIntro } = useContent();
+
+  return (
+    <section className="bg-page-alt py-section">
+      <Container>
+        <SectionHead label={t.ui.home.storyKicker} title={t.ui.home.storyHeading} />
+        <div className="mt-block grid items-start gap-block lg:grid-cols-12 lg:gap-x-10">
+          <Plate
+            src="/images/plates/affey-04.jpg"
+            alt={t.ui.home.heroPhotoAlt}
+            caption={t.ui.home.heroPhotoCaption}
+            ratio="16/10"
+            sizes="(max-width: 1024px) 92vw, 50vw"
+            className="lg:col-span-6 lg:col-start-4"
+          />
+          <div className="lg:col-span-3">
+            <p data-reveal className="max-w-measure text-ink-700">{storyIntro}</p>
+            <div data-reveal style={delay(100)} className="mt-8">
+              <Button href="/story" variant="secondary">{t.ui.home.readFullStory}</Button>
             </div>
           </div>
         </div>
+      </Container>
+    </section>
+  );
+}
+
+/** The inside of the back cover: one statement, set large on green. */
+function PullQuote() {
+  const { t } = useLanguage();
+  return (
+    <section data-surface="cover" className="bg-cover py-section text-sand-50">
+      <Container>
+        <figure data-reveal className="lg:ml-[25%]">
+          <blockquote className="max-w-[34ch] font-display text-[clamp(1.375rem,1.05rem+1.1vw,2.125rem)] leading-[1.3]">
+            <span aria-hidden="true" className="mb-2 block text-heading leading-none text-ochre-300">“</span>
+            {t.ui.home.quote}
+          </blockquote>
+          <figcaption className="mt-6 text-sand-200">{t.ui.home.quoteAttribution}</figcaption>
+        </figure>
+      </Container>
+    </section>
+  );
+}
+
+/** The close: whose campaign this is, and the two ways to join it. */
+function CtaClose() {
+  const { t } = useLanguage();
+  return (
+    <section className="bg-page py-section">
+      <Container className="grid items-end gap-block lg:grid-cols-12 lg:gap-x-10">
+        <div className="lg:col-span-7">
+          <h2 data-reveal className="max-w-[14ch] text-display">{t.ui.home.ctaHeading}</h2>
+          <p data-reveal style={delay(100)} className="mt-6 max-w-measure text-lead text-ink-700">{t.ui.home.ctaBody}</p>
+          <div data-reveal style={delay(180)} className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <Button href="/get-involved#donate" size="lg">{t.ui.home.ctaSecondary}</Button>
+            <Button href="/get-involved" variant="secondary" size="lg">{t.ui.home.ctaPrimary}</Button>
+          </div>
+        </div>
+        <Plate
+          src={wajirImages.rooftops.src}
+          alt={wajirImages.rooftops.alt}
+          ratio="4/5"
+          sizes="(max-width: 1024px) 92vw, 34vw"
+          className="lg:col-span-4 lg:col-start-9"
+        />
       </Container>
     </section>
   );

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Signboards of Wajir — first viewport sketch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--sand:#f8f4ec;--sand2:#e6dcc9;--ink:#16130f;--green:#0d6a4c;--green-deep:#063c2b;--red:#a52a1e;--ochre:#d9a94f;--ochre-dark:#a56d1c}
+*{box-sizing:border-box}
+body{margin:0;width:1440px;height:900px;overflow:hidden;background:var(--sand);color:var(--ink);font-family:'Atkinson Hyperlegible Next',system-ui,sans-serif}
+.bar{height:44px;background:var(--ink);color:var(--sand);display:flex;align-items:center;justify-content:space-between;padding:0 48px;font-family:'Big Shoulders Display';font-weight:800;letter-spacing:.06em;font-size:18px}
+.bar b{color:var(--ochre)}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;border-bottom:3px solid var(--ink)}
+.brand{display:flex;align-items:center;gap:14px;font-family:'Big Shoulders Display';font-weight:900;font-size:26px;letter-spacing:.02em}
+.coa{width:40px;height:40px;background:var(--sand2);border:2px solid var(--ink)}
+.links{display:flex;gap:32px;font-weight:600;font-size:16px}
+.right{display:flex;gap:12px;align-items:center}
+.lang{display:flex;border:2px solid var(--ink)}.lang span{padding:8px 12px;font-weight:700;font-size:14px}.lang .on{background:var(--ink);color:var(--sand)}
+.donate{background:var(--red);color:var(--sand);padding:12px 22px;font-weight:700}
+.board{display:grid;grid-template-columns:1.35fr 1fr;height:780px}
+.left{background:var(--green-deep);color:var(--sand);padding:56px 48px 48px;display:flex;flex-direction:column;justify-content:space-between}
+h1{margin:0;font-family:'Big Shoulders Display';font-weight:900;text-transform:uppercase;font-size:168px;line-height:.84;letter-spacing:-.01em}
+.office{margin-top:18px;font-family:'Big Shoulders Display';font-weight:800;font-size:40px;color:var(--ochre);text-transform:uppercase;letter-spacing:.02em}
+.promise{display:grid;gap:0;border-top:3px solid var(--sand)}
+.promise div{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:3px solid var(--sand);font-family:'Big Shoulders Display';font-weight:800;font-size:44px;text-transform:uppercase}
+.promise small{font-family:'Atkinson Hyperlegible Next';font-size:14px;font-weight:700;letter-spacing:.1em;color:var(--ochre)}
+.ctas{display:flex;gap:12px;margin-top:28px}
+.ctas a{padding:18px 30px;font-weight:700;font-size:18px}
+.c1{background:var(--red);color:var(--sand)}.c2{border:3px solid var(--sand);color:var(--sand)}
+.rightcol{display:grid;grid-template-rows:1fr auto}
+.photo{background:linear-gradient(0deg,rgba(6,60,43,.25),rgba(6,60,43,.25)),url('../../../public/images/MohamedA01.jpg') center/cover;border-left:3px solid var(--ink)}
+.count{background:var(--ochre);border-left:3px solid var(--ink);border-top:3px solid var(--ink);padding:22px 32px;display:flex;align-items:baseline;gap:18px}
+.count .n{font-family:'Big Shoulders Display';font-weight:900;font-size:96px;line-height:.9;font-variant-numeric:tabular-nums}
+.count .l{font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="bar"><span>COUNTDOWN TO THE GENERAL ELECTION</span><span><b>266</b> DAYS · TUESDAY, 10 AUGUST 2027</span></div>
+<nav><div class="brand"><span class="coa"></span>MOHAMED ABDI AFFEY</div>
+<div class="links"><span>The Story</span><span>Vision for Wajir</span><span>Record</span><span>Wajir County</span><span>News &amp; Events</span><span>Get Involved</span></div>
+<div class="right"><div class="lang"><span class="on">EN</span><span>SW</span><span>SO</span></div><span class="donate">Donate</span></div></nav>
+<div class="board">
+ <div class="left">
+  <div><h1>Mohamed<br>Abdi Affey</h1><div class="office">for Governor of Wajir County</div></div>
+  <div>
+   <div class="promise">
+    <div>Wajir First, Always.<small>EN</small></div>
+    <div>Wajir Kwanza, Daima.<small>SW</small></div>
+    <div>Wajir Hore, Ilaa Calaacal.<small>SO</small></div>
+   </div>
+   <div class="ctas"><a class="c1">Donate</a><a class="c2">Explore the record</a></div>
+  </div>
+ </div>
+ <div class="rightcol"><div class="photo"></div><div class="count"><span class="n">266</span><span class="l">Days<br>Tuesday, 10 August 2027</span></div></div>
+</div>
+</body>
+</html>

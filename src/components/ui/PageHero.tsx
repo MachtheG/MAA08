@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { type ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Container } from "./Container";
-import { Kicker } from "./Kicker";
 
 /**
- * Interior-page hero. Optional background image renders as a duotone-ish band
- * behind a dark scrim for legibility.
+ * Interior-page opener: the passport opened at a new page. Deep-green cover
+ * ground, the section name in the margin column, the page title in engraved
+ * type across the main column, and a wide duotone plate beneath it.
  */
 export function PageHero({
   kicker,
@@ -13,6 +13,8 @@ export function PageHero({
   intro,
   image,
   imageAlt = "",
+  imagePosition = "50% 50%",
+  narrow = false,
   children,
 }: {
   kicker: string;
@@ -20,39 +22,48 @@ export function PageHero({
   intro?: ReactNode;
   image?: string;
   imageAlt?: string;
+  imagePosition?: string;
+  /** Small source photographs (the candidate's) stay near native size. */
+  narrow?: boolean;
   children?: ReactNode;
 }) {
-  const dark = Boolean(image);
   return (
-    <section className={`relative overflow-hidden ${dark ? "bg-ink-900 text-sand-50" : "bg-sand-100 text-ink-900"}`}>
-      {image && (
-        <>
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/70 to-ink-900/40" aria-hidden="true" />
-          <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-flag-black via-flag-red to-flag-green" aria-hidden="true" />
-        </>
-      )}
-      <Container className={`relative ${image ? "py-20 sm:py-28" : "py-16 sm:py-20"}`}>
-        <Kicker tone={dark ? "light" : "green"}>{kicker}</Kicker>
-        <h1
-          className={`mt-5 max-w-4xl font-display font-semibold tracking-tight text-balance ${dark ? "text-sand-50" : "text-ink-900"}`}
-          style={{ fontSize: "var(--text-hero)", lineHeight: "var(--text-hero--line-height)" }}
-        >
-          {title}
-        </h1>
-        {intro && (
-          <p className={`mt-6 max-w-2xl text-lg leading-relaxed ${dark ? "text-sand-100/85" : "text-ink-700"}`}>
-            {intro}
-          </p>
+    <section data-surface="cover" className="bg-cover text-sand-50">
+      <Container className="grid gap-x-10 gap-y-8 pb-14 pt-12 sm:pb-20 sm:pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:pb-24 lg:pt-20">
+        <p className="hidden font-display text-lead text-figure-on-cover lg:block lg:pt-4">{kicker}</p>
+        <div>
+          <h1 className="max-w-[20ch] text-[clamp(2.375rem,1.5rem+3.4vw,4.75rem)] leading-[1] tracking-[-0.02em]">
+            <span className="mask-line">
+              <span>{title}</span>
+            </span>
+          </h1>
+          {intro && (
+            <p className="enter mt-6 max-w-measure text-lead text-sand-100" style={{ "--enter-delay": "120ms" } as CSSProperties}>
+              {intro}
+            </p>
+          )}
+          {children && <div className="mt-8">{children}</div>}
+        </div>
+        {image && (
+          <div
+            style={{ "--enter-delay": "200ms" } as CSSProperties}
+            className={`enter relative mt-6 overflow-hidden lg:col-start-2 lg:mt-10 ${
+              narrow ? "aspect-[4/3] w-full max-w-[34rem]" : "aspect-[4/3] sm:aspect-[2/1] lg:aspect-[21/9]"
+            }`}
+          >
+            <Image
+              src={image}
+              alt={imageAlt}
+              fill
+              loading="eager"
+              fetchPriority="high"
+              quality={narrow ? 72 : 60}
+              sizes={narrow ? "(max-width: 640px) 92vw, 544px" : "(max-width: 1024px) 92vw, 70vw"}
+              className="object-cover"
+              style={{ objectPosition: imagePosition }}
+            />
+          </div>
         )}
-        {children && <div className="mt-8">{children}</div>}
       </Container>
     </section>
   );

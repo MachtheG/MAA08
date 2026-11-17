@@ -19,8 +19,8 @@ export function VolunteerForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-flag-green/30 bg-flag-green/5 p-6 text-center sm:p-8">
-        <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-flag-green text-sand-50">
+      <div role="status" className="rounded-page bg-page-alt p-6 sm:p-10">
+        <div className="grid size-12 place-items-center rounded-control bg-flag-green text-sand-50">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
             <path
               d="M4 11l5 5 9-10"
@@ -31,14 +31,14 @@ export function VolunteerForm() {
             />
           </svg>
         </div>
-        <h3 className="mt-4 font-display text-xl font-semibold text-ink-900">
+        <h3 className="mt-5 text-heading text-ink-900">
           {f.thanksHeading}
         </h3>
-        <p className="mx-auto mt-2 max-w-sm text-sm text-ink-600">{f.thanksBody}</p>
+        <p className="mt-3 max-w-measure text-ink-700">{f.thanksBody}</p>
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          className="mt-5 text-sm font-semibold text-flag-green-dark underline underline-offset-4"
+          className="mt-6 min-h-11 font-bold text-flag-green-dark underline decoration-2 underline-offset-4"
         >
           {f.submitAnother}
         </button>
@@ -49,7 +49,7 @@ export function VolunteerForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-line bg-sand-50 p-5 sm:p-7 lg:p-8"
+      className="rounded-page bg-page-alt p-5 sm:p-8 lg:p-10"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={f.fullName} htmlFor="v-name" required>
@@ -84,18 +84,18 @@ export function VolunteerForm() {
       </div>
 
       <fieldset className="mt-6">
-        <legend className="text-sm font-semibold text-ink-800">{f.howHelp}</legend>
+        <legend className="font-bold text-ink-900">{f.howHelp}</legend>
         <div className="mt-3 grid gap-2 sm:grid-cols-2">
           {f.interests.map((it) => (
             <label
               key={it}
-              className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-line bg-sand-100/50 px-3.5 py-2.5 text-sm text-ink-700 hover:bg-sand-100"
+              className="flex min-h-12 cursor-pointer items-center gap-3 rounded-control bg-page px-3.5 py-2.5 text-ink-800 transition-colors hover:bg-page-deep has-[:checked]:bg-page-deep"
             >
               <input
                 type="checkbox"
                 name="interests"
                 value={it}
-                className="h-4 w-4 shrink-0 accent-flag-green"
+                className="size-5 shrink-0 accent-flag-green"
               />
               <span className="min-w-0">{it}</span>
             </label>
@@ -105,17 +105,17 @@ export function VolunteerForm() {
 
       <button
         type="submit"
-        className="mt-7 w-full rounded-full bg-flag-green px-6 py-3.5 text-base font-semibold text-sand-50 shadow-sm transition-transform hover:-translate-y-0.5 sm:w-auto sm:px-10"
+        className="mt-8 min-h-14 w-full rounded-control bg-ink-900 px-6 text-[1.0625rem] font-bold text-sand-50 transition-[background-color,transform] duration-(--duration-quick) hover:bg-flag-green-dark active:scale-[0.98] sm:w-auto sm:px-10"
       >
         {f.submit}
       </button>
-      <p className="mt-3 text-xs text-ink-500">{f.demoNote}</p>
+      <p className="mt-3 text-small text-ink-700">{f.demoNote}</p>
     </form>
   );
 }
 
 const inputCls =
-  "w-full rounded-lg border border-line-strong bg-sand-50 px-3.5 py-2.5 text-ink-900 placeholder:text-ink-400 focus:border-flag-green focus:outline-none focus:ring-2 focus:ring-flag-green/25";
+  "min-h-12 w-full rounded-control border-[1.5px] border-ink-900 bg-page px-3.5 text-ink-900 user-invalid:border-flag-red";
 
 function Field({
   label,
@@ -130,9 +130,9 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-semibold text-ink-800">
+      <label htmlFor={htmlFor} className="mb-2 block font-bold text-ink-900">
         {label}
-        {required && <span className="ml-0.5 text-flag-red">*</span>}
+        {required && <span aria-hidden="true" className="ml-0.5 text-flag-red">*</span>}
       </label>
       {children}
     </div>

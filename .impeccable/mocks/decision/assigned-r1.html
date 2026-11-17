@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Envoy's Passport — first viewport sketch</title>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Atkinson+Hyperlegible+Next:wght@400;700&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--sand:#f8f4ec;--sand1:#f1ebdf;--sand2:#e6dcc9;--ink:#16130f;--ink6:#4f463a;--green:#0d6a4c;--deep:#063c2b;--red:#a52a1e;--ochre:#d9a94f;--ochre3:#e6c583;--ochre6:#a56d1c}
+*{box-sizing:border-box}
+body{margin:0;width:1440px;height:900px;overflow:hidden;background:var(--deep);color:var(--ink);font-family:'Atkinson Hyperlegible Next',sans-serif}
+nav{height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;color:var(--sand)}
+.brand{display:flex;gap:14px;align-items:center;font-family:Prata;font-size:22px}
+.coa{width:38px;height:38px;background:var(--sand2);border-radius:6px}
+.links{display:flex;gap:30px;font-size:15px;color:var(--ochre3)}
+.r{display:flex;gap:14px;align-items:center;font-size:14px}.donate{background:var(--red);color:var(--sand);padding:11px 22px;font-weight:700;border-radius:4px}
+.book{position:absolute;left:56px;right:56px;top:96px;bottom:40px;background:var(--sand);border-radius:14px;display:grid;grid-template-columns:420px 1fr;overflow:hidden;
+ background-image:repeating-radial-gradient(ellipse 140% 90% at 85% 30%, rgba(13,106,76,.07) 0 1px, transparent 1px 9px)}
+.photo{margin:44px 0 44px 44px;background:url('../../../public/images/MohamedA01.jpg') 40% center/cover;border:1px solid var(--ink);filter:grayscale(.15)}
+.data{padding:44px 56px 0 56px;position:relative}
+.small{font-family:'Martian Mono';font-size:12px;letter-spacing:.08em;color:var(--green);text-transform:uppercase}
+h1{margin:14px 0 0;font-family:Prata;font-weight:400;font-size:116px;line-height:.95;letter-spacing:-.01em}
+.office{margin-top:14px;font-family:Prata;font-size:32px;color:var(--ink6)}
+.promise{margin-top:34px;font-family:Prata;font-size:46px;color:var(--green)}
+.ctas{display:flex;gap:14px;margin-top:30px}.ctas a{padding:17px 28px;font-weight:700;font-size:17px;border-radius:4px}
+.c1{background:var(--red);color:var(--sand)}.c2{border:1.5px solid var(--ink)}
+.stamp{position:absolute;right:56px;top:40px;width:190px;padding:14px 16px;border:2.5px solid var(--red);color:var(--red);transform:rotate(-7deg);border-radius:10px;font-family:'Martian Mono';text-transform:uppercase}
+.stamp b{display:block;font-size:38px;line-height:1}.stamp span{font-size:11px;letter-spacing:.06em}
+.strip{position:absolute;left:420px;right:0;bottom:0;height:72px;border-top:1px solid var(--ink);display:flex;align-items:center;gap:28px;padding:0 56px;font-family:'Martian Mono';font-size:15px;letter-spacing:.12em;background:var(--sand1)}
+.strip b{font-size:26px;font-weight:600}
+</style>
+</head>
+<body>
+<nav><div class="brand"><span class="coa"></span>Mohamed Abdi Affey</div>
+<div class="links"><span>The Story</span><span>Vision for Wajir</span><span>Record</span><span>Wajir County</span><span>News &amp; Events</span><span>Get Involved</span></div>
+<div class="r"><span style="color:var(--sand)">EN · SW · SO</span><span class="donate">Donate</span></div></nav>
+<div class="book">
+ <div class="photo"></div>
+ <div class="data">
+  <div class="small">Wajir County · Gubernatorial Campaign</div>
+  <h1>Mohamed<br>Abdi Affey</h1>
+  <div class="office">for Governor of Wajir County</div>
+  <div class="promise">Wajir First, Always.</div>
+  <div class="ctas"><a class="c1">Donate</a><a class="c2">Explore the record</a></div>
+  <div class="stamp"><b>1997</b><span>Elected MP at age 27</span></div>
+ </div>
+ <div class="strip"><b>266</b> DAYS · <b>08</b> HOURS · <b>17</b> MINUTES · TUESDAY, 10 AUGUST 2027</div>
+</div>
+</body>
+</html>

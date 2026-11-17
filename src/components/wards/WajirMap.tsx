@@ -86,8 +86,8 @@ export function WajirMap() {
   return (
     <div className="grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-12">
       {/* Map */}
-      <div className="rounded-2xl border border-line bg-sand-50 p-4 sm:p-6">
-        <p className="mb-4 text-center text-xs font-semibold uppercase tracking-wider text-ink-500">
+      <div data-reveal className="ruling rounded-page bg-page-alt p-4 sm:p-8">
+        <p className="mb-5 text-center font-display text-lead text-ink-900">
           {t.ui.wards.mapTitle}
         </p>
 
@@ -104,7 +104,7 @@ export function WajirMap() {
                 dx="0"
                 dy="3"
                 stdDeviation="4"
-                floodColor="#3b2f24"
+                style={{ floodColor: "var(--color-ink-700)" }}
                 floodOpacity="0.18"
               />
             </filter>
@@ -159,11 +159,11 @@ export function WajirMap() {
                 textAnchor="middle"
                 dominantBaseline="middle"
                 paintOrder="stroke"
-                stroke={isActive ? "#1d5c3a" : "#f7f1e6"}
+
                 strokeWidth={3}
                 strokeLinejoin="round"
-                className={`pointer-events-none select-none text-[12px] font-semibold ${
-                  isActive ? "fill-sand-50" : "fill-ink-800"
+                className={`pointer-events-none select-none text-[13px] font-bold ${
+                  isActive ? "fill-sand-50 stroke-flag-green-dark" : "fill-ink-800 stroke-sand-100"
                 }`}
               >
                 {lines.map((line, i) => (
@@ -189,56 +189,54 @@ export function WajirMap() {
           </g>
         </svg>
 
-        <p className="mt-4 flex items-center justify-center gap-2 text-xs font-medium text-ink-600">
+        <p className="mt-5 flex items-center justify-center gap-2 text-small font-bold text-ink-700">
           <span
             aria-hidden="true"
-            className="h-2.5 w-2.5 shrink-0 rounded-full bg-flag-red ring-2 ring-sand-50"
+            className="size-3 shrink-0 rounded-full bg-flag-red ring-2 ring-sand-50"
           />
           {t.ui.wards.hqLabel}
         </p>
 
-        <p className="mx-auto mt-3 max-w-sm text-center text-xs leading-relaxed text-ink-500">
+        <p className="mx-auto mt-3 max-w-sm text-center text-small text-ink-700">
           {t.ui.wards.mapCaption}
         </p>
       </div>
 
       {/* Detail panel */}
-      <div className="lg:sticky lg:top-24">
-        <div className="rounded-2xl border border-line bg-sand-100 p-5 sm:p-7 lg:p-8">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-flag-green-dark">
-              {t.ui.wards.constituencyLabel}
-            </p>
-            <StatusBadge status={active.status} />
-          </div>
-          <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
+      <div data-reveal style={{ ["--reveal-delay" as string]: "120ms" }} className="lg:sticky lg:top-24">
+        <div className="rounded-page bg-cover p-6 text-sand-50 sm:p-9" data-surface="cover">
+          <p className="font-display text-lead text-figure-on-cover">
+            {t.ui.wards.constituencyLabel}
+          </p>
+          <h2 className="mt-3 text-heading text-sand-50">
             {active.name}
           </h2>
+          <StatusBadge status={active.status} onCover className="mt-4" />
 
           {/* Population & voters, from the reference constituency map */}
-          <dl className="mt-5 grid grid-cols-2 gap-3">
-            <div className="rounded-xl border border-line bg-sand-50 px-4 py-3">
-              <dt className="text-xs font-medium text-ink-500">
+          <dl className="mt-7 grid grid-cols-2 gap-6 border-t-[3px] border-sand-50/25 pt-6">
+            <div>
+              <dt className="text-small font-bold text-sand-200">
                 {t.ui.wards.population}
               </dt>
-              <dd className="mt-0.5 font-display text-xl font-semibold tabular-nums text-ink-900">
+              <dd className="mt-1 font-display text-heading leading-none tabular text-sand-50">
                 {nf.format(active.population)}
               </dd>
             </div>
-            <div className="rounded-xl border border-line bg-sand-50 px-4 py-3">
-              <dt className="text-xs font-medium text-ink-500">
+            <div>
+              <dt className="text-small font-bold text-sand-200">
                 {t.ui.wards.voters}
               </dt>
-              <dd className="mt-0.5 font-display text-xl font-semibold tabular-nums text-flag-green-dark">
+              <dd className="mt-1 font-display text-heading leading-none tabular text-ochre-300">
                 {nf.format(active.voters)}
               </dd>
             </div>
           </dl>
 
-          <p className="mt-5 leading-relaxed text-ink-600">{active.note}</p>
+          <p className="mt-6 text-sand-100">{active.note}</p>
 
-          <div className="mt-6 rounded-xl border border-dashed border-ochre-500/40 bg-ochre-400/[0.07] p-4 text-sm text-ink-600">
-            <p className="font-semibold text-ink-800">
+          <div className="mt-7 border-t-[3px] border-sand-50/25 pt-5 text-sand-100">
+            <p className="font-bold text-sand-50">
               {t.ui.wards.whatLivesHereTitle}
             </p>
             <p className="mt-1">{t.ui.wards.whatLivesHereBody}</p>
@@ -246,17 +244,17 @@ export function WajirMap() {
         </div>
 
         {/* Quick selector */}
-        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:flex lg:flex-wrap">
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
           {constituencies.map((c) => (
             <button
               key={c.id}
               type="button"
               onClick={() => setSelected(c.id)}
               aria-pressed={c.id === selected}
-              className={`rounded-full px-3 py-2 text-center text-xs font-medium transition-colors sm:text-sm ${
+              className={`min-h-12 rounded-control border-[1.5px] px-3 text-center font-bold transition-colors ${
                 c.id === selected
-                  ? "bg-flag-green text-sand-50"
-                  : "border border-line text-ink-600 hover:bg-ink-900/5"
+                  ? "border-ink-900 bg-ink-900 text-sand-50"
+                  : "border-ink-900 text-ink-900 hover:bg-ink-900/8"
               }`}
             >
               {c.name}

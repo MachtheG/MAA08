@@ -1,25 +1,29 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
-import { Kicker } from "@/components/ui/Kicker";
-import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
+import { SectionHead } from "@/components/ui/SectionHead";
 import { StatusBadge } from "@/components/ui/Status";
 import { useContent } from "@/content/useContent";
+import { candidatePlates } from "@/content/imagery";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
-function CheckIcon() {
+const delay = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as CSSProperties;
+
+/** An entry endorsed on the page: a drawn tick in the margin, the entry beside it. */
+function Entry({ title, detail, tone, i }: { title: string; detail: string; tone: "green" | "ochre"; i: number }) {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-      <path
-        d="M3.5 9.5l3.5 3.5 7.5-8"
-        stroke="currentColor"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <li data-reveal style={delay((i % 2) * 80)} className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-4">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" className={tone === "green" ? "text-flag-green" : "text-ochre-700"}>
+        <path d="M5 14.5 11.5 21 23 7.5" stroke="currentColor" strokeWidth="3" strokeLinecap="square" />
+      </svg>
+      <div>
+        <h3 className="text-lead text-ink-900">{title}</h3>
+        <p className="mt-1.5 max-w-measure text-text-muted">{detail}</p>
+      </div>
+    </li>
   );
 }
 
@@ -29,99 +33,58 @@ export function RecordContent() {
 
   return (
     <>
-      <PageHero
-        kicker={t.ui.record.kicker}
-        title={t.ui.record.title}
-        intro={t.ui.record.intro}
-      />
+      <PageHero kicker={t.ui.record.kicker} title={t.ui.record.title} intro={t.ui.record.intro} image={candidatePlates.diplomacy.src} imageAlt={candidatePlates.diplomacy.alt} imagePosition="50% 30%" narrow />
 
-      <section className="bg-sand-50 py-12 sm:py-16 lg:py-24">
+      <section className="bg-page py-section">
         <Container>
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            <Kicker>{t.ui.record.nationalKicker}</Kicker>
-            <StatusBadge status="verified" />
-          </div>
-
-          <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2">
+          <SectionHead title={t.ui.record.nationalKicker} aside={<StatusBadge status="verified" />} />
+          <ul className="mt-block grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:ml-[25%]">
             {recordVerified.map((r, i) => (
-              <Reveal key={r.title} as="article" delay={(i % 2) * 80}>
-                <div className="flex h-full gap-4 rounded-2xl border border-line bg-sand-50 p-5 transition-shadow hover:shadow-md sm:p-6">
-                  <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-flag-green/10 text-flag-green-dark">
-                    <CheckIcon />
-                  </span>
-                  <div className="min-w-0">
-                    <h2 className="font-display text-lg font-semibold text-ink-900">
-                      {r.title}
-                    </h2>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-600">
-                      {r.detail}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
+              <Entry key={r.title} title={r.title} detail={r.detail} tone="green" i={i} />
             ))}
-          </div>
+          </ul>
+        </Container>
+      </section>
 
-          {/* Education & languages */}
-          <div className="mt-10 grid gap-6 rounded-2xl border border-line bg-sand-100 p-6 sm:grid-cols-2 sm:p-9 lg:mt-12">
-            <div>
-              <Kicker tone="ochre">{t.ui.record.educationKicker}</Kicker>
-              <ul className="mt-4 space-y-3">
-                {profile.education.map((e) => (
-                  <li key={e.degree}>
-                    <p className="font-display text-base font-semibold text-ink-900">
-                      {e.degree}
-                    </p>
-                    <p className="text-sm text-ink-500">{e.institution}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <Kicker tone="ochre">{t.ui.record.languagesKicker}</Kicker>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {profile.languages.map((l) => (
-                  <li
-                    key={l}
-                    className="rounded-full bg-flag-green/10 px-3.5 py-1.5 text-sm font-medium text-flag-green-dark"
-                  >
-                    {l}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* County record */}
-          <div className="mt-10 lg:mt-12">
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <Kicker tone="ochre">{t.ui.record.countyKicker}</Kicker>
-              <StatusBadge status="verified" />
-            </div>
-            <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2">
-              {countyAchievements.map((r, i) => (
-                <Reveal key={r.title} as="article" delay={(i % 2) * 80}>
-                  <div className="flex h-full gap-4 rounded-2xl border border-line bg-sand-100 p-5 transition-shadow hover:shadow-md sm:p-6">
-                    <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ochre-400/10 text-ochre-600">
-                      <CheckIcon />
-                    </span>
-                    <div className="min-w-0">
-                      <h2 className="font-display text-lg font-semibold text-ink-900">
-                        {r.title}
-                      </h2>
-                      <p className="mt-1 text-sm leading-relaxed text-ink-600">
-                        {r.detail}
-                      </p>
-                    </div>
-                  </div>
-                </Reveal>
+      {/* Education and languages: one facing page, a tone step from the last. */}
+      <section className="bg-page-alt py-section">
+        <Container className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-10">
+          <div data-reveal className="lg:col-span-4 lg:col-start-4">
+            <h2 className="font-display text-lead text-figure">{t.ui.record.educationKicker}</h2>
+            <ul className="mt-6 space-y-6">
+              {profile.education.map((e) => (
+                <li key={e.degree}>
+                  <p className="font-display text-lead text-ink-900">{e.degree}</p>
+                  <p className="mt-1 text-text-muted">{e.institution}</p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
+          <div data-reveal style={delay(100)} className="lg:col-span-4">
+            <h2 className="font-display text-lead text-figure">{t.ui.record.languagesKicker}</h2>
+            <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+              {profile.languages.map((l) => (
+                <li key={l} className="font-display text-heading text-ink-900">
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      </section>
 
-          <div className="mt-10 flex flex-wrap gap-3 lg:mt-12">
-            <Button href="/story" variant="outline">{t.ui.record.ctaStory}</Button>
-            <Button href="/vision" variant="gold">{t.ui.record.ctaVision}</Button>
+      <section className="bg-page py-section">
+        <Container>
+          <SectionHead title={t.ui.record.countyKicker} aside={<StatusBadge status="verified" />} />
+          <ul className="mt-block grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:ml-[25%]">
+            {countyAchievements.map((r, i) => (
+              <Entry key={r.title} title={r.title} detail={r.detail} tone="ochre" i={i} />
+            ))}
+          </ul>
+
+          <div className="mt-block flex flex-col gap-3 sm:flex-row lg:ml-[25%]">
+            <Button href="/vision" variant="secondary">{t.ui.record.ctaVision}</Button>
+            <Button href="/story" variant="quiet">{t.ui.record.ctaStory}</Button>
           </div>
         </Container>
       </section>

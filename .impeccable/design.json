@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T05:18:56.698340+00:00",
+  "title": "Design System: Mohamed Abdi Affey for Governor of Wajir County",
+  "extensions": {
+    "colorMeta": {
+      "flag-green-deep": {
+        "role": "primary",
+        "displayName": "Cover Board Green",
+        "tonalRamp": [
+          "#063c2b",
+          "#084a34",
+          "#0d6a4c"
+        ]
+      },
+      "flag-green": {
+        "role": "primary",
+        "displayName": "Flag Green",
+        "tonalRamp": [
+          "#063c2b",
+          "#084a34",
+          "#0d6a4c"
+        ]
+      },
+      "flag-green-dark": {
+        "role": "primary",
+        "displayName": "Deep Flag Green",
+        "tonalRamp": [
+          "#063c2b",
+          "#084a34",
+          "#0d6a4c"
+        ]
+      },
+      "flag-red": {
+        "role": "secondary",
+        "displayName": "Stamp Red",
+        "tonalRamp": [
+          "color-mix(in oklab, #a52a1e 84%, #16130f)",
+          "#a52a1e",
+          "color-mix(in oklab, #a52a1e 60%, #f8f4ec)",
+          "color-mix(in oklab, #a52a1e 30%, #f8f4ec)"
+        ]
+      },
+      "ochre-700": {
+        "role": "tertiary",
+        "displayName": "Ochre Figures (derived: ochre-600 30% toward ink-900)",
+        "tonalRamp": [
+          "#7a5218",
+          "#a56d1c",
+          "#c68a2a",
+          "#d9a94f",
+          "#e6c583"
+        ]
+      },
+      "ochre-600": {
+        "role": "tertiary",
+        "displayName": "Ochre 600",
+        "tonalRamp": [
+          "#7a5218",
+          "#a56d1c",
+          "#c68a2a",
+          "#d9a94f",
+          "#e6c583"
+        ]
+      },
+      "ochre-500": {
+        "role": "tertiary",
+        "displayName": "Ochre 500",
+        "tonalRamp": [
+          "#7a5218",
+          "#a56d1c",
+          "#c68a2a",
+          "#d9a94f",
+          "#e6c583"
+        ]
+      },
+      "ochre-400": {
+        "role": "tertiary",
+        "displayName": "Ochre 400",
+        "tonalRamp": [
+          "#7a5218",
+          "#a56d1c",
+          "#c68a2a",
+          "#d9a94f",
+          "#e6c583"
+        ]
+      },
+      "ochre-300": {
+        "role": "tertiary",
+        "displayName": "Pale Ochre",
+        "tonalRamp": [
+          "#7a5218",
+          "#a56d1c",
+          "#c68a2a",
+          "#d9a94f",
+          "#e6c583"
+        ]
+      },
+      "sand-50": {
+        "role": "neutral",
+        "displayName": "Passport Page",
+        "tonalRamp": [
+          "#c2ad87",
+          "#d6c7a8",
+          "#e6dcc9",
+          "#f1ebdf",
+          "#f8f4ec"
+        ]
+      },
+      "sand-100": {
+        "role": "neutral",
+        "displayName": "Facing Page",
+        "tonalRamp": [
+          "#c2ad87",
+          "#d6c7a8",
+          "#e6dcc9",
+          "#f1ebdf",
+          "#f8f4ec"
+        ]
+      },
+      "sand-200": {
+        "role": "neutral",
+        "displayName": "Page Inset",
+        "tonalRamp": [
+          "#c2ad87",
+          "#d6c7a8",
+          "#e6dcc9",
+          "#f1ebdf",
+          "#f8f4ec"
+        ]
+      },
+      "sand-300": {
+        "role": "neutral",
+        "displayName": "Sand 300",
+        "tonalRamp": [
+          "#c2ad87",
+          "#d6c7a8",
+          "#e6dcc9",
+          "#f1ebdf",
+          "#f8f4ec"
+        ]
+      },
+      "sand-400": {
+        "role": "neutral",
+        "displayName": "Sand 400",
+        "tonalRamp": [
+          "#c2ad87",
+          "#d6c7a8",
+          "#e6dcc9",
+          "#f1ebdf",
+          "#f8f4ec"
+        ]
+      },
+      "ink-900": {
+        "role": "neutral",
+        "displayName": "Printing Ink",
+        "tonalRamp": [
+          "#16130f",
+          "#221d17",
+          "#362f26",
+          "#4f463a",
+          "#6b6153",
+          "#8c8272",
+          "#aba08d"
+        ]
+      },
+      "ink-800": {
+        "role": "neutral",
+        "displayName": "Ink 800",
+        "tonalRamp": [
+          "#16130f",
+          "#221d17",
+          "#362f26",
+          "#4f463a",
+          "#6b6153",
+          "#8c8272",
+          "#aba08d"
+        ]
+      },
+      "ink-700": {
+        "role": "neutral",
+        "displayName": "Ink 700",
+        "tonalRamp": [
+          "#16130f",
+          "#221d17",
+          "#362f26",
+          "#4f463a",
+          "#6b6153",
+          "#8c8272",
+          "#aba08d"
+        ]
+      },
+      "ink-600": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "tonalRamp": [
+          "#16130f",
+          "#221d17",
+          "#362f26",
+          "#4f463a",
+          "#6b6153",
+          "#8c8272",
+          "#aba08d"
+        ]
+      },
+      "ink-500": {
+        "role": "neutral",
+        "displayName": "Ink 500",
+        "tonalRamp": [
+          "#16130f",
+          "#221d17",
+          "#362f26",
+          "#4f463a",
+          "#6b6153",
+          "#8c8272",
+          "#aba08d"
+        ]
+      },
+      "ink-400": {
+        "role": "neutral",
+        "displayName": "Ink 400",
+        "tonalRamp": [
+          "#16130f",
+          "#221d17",
+          "#362f26",
+          "#4f463a",
+          "#6b6153",
+          "#8c8272",
+          "#aba08d"
+        ]
+      },
+      "ink-300": {
+        "role": "neutral",
+        "displayName": "Ink 300",
+        "tonalRamp": [
+          "#16130f",
+          "#221d17",
+          "#362f26",
+          "#4f463a",
+          "#6b6153",
+          "#8c8272",
+          "#aba08d"
+        ]
+      },
+      "flag-black": {
+        "role": "neutral",
+        "displayName": "Flag Black (footer flag strip only)",
+        "tonalRamp": [
+          "#14110d"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "tonalRamp": [
+          "rgb(22 19 15 / 0.14)",
+          "rgb(22 19 15 / 0.28)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "tonalRamp": [
+          "rgb(22 19 15 / 0.14)",
+          "rgb(22 19 15 / 0.28)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The candidate's name and page titles. Prata 400."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and stamp figures."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Margin-column section labels (desktop only), footer column heads, office line."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Section and hero intros, max 40rem."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running text, 17px, max 40rem."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Captions, units, stamp captions. Sentence case, no tracking; 13px floor."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Countdown, years, amounts in tabular lining figures."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out-quart",
+        "value": "cubic-bezier(0.25, 1, 0.5, 1)",
+        "purpose": "Default ease for reveals, hovers, underline draws, header condense."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Stamp press, headline mask rise, menu sheet."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Reserved symmetric ease."
+      },
+      {
+        "name": "duration-quick",
+        "value": "160ms",
+        "purpose": "Button tone steps and press."
+      },
+      {
+        "name": "duration-base",
+        "value": "420ms",
+        "purpose": "Underline draw, arrow step, nav underline, menu sheet."
+      },
+      {
+        "name": "duration-slow",
+        "value": "640ms",
+        "purpose": "Scroll reveals (20px rise + fade) and first-viewport entrances."
+      },
+      {
+        "name": "stamp-press",
+        "value": "opacity 240ms + transform 520ms ease-out-expo, from rotate(tilt) scale(1.08)",
+        "purpose": "Entry stamps pressing onto the page, once."
+      },
+      {
+        "name": "settle",
+        "value": "scale(1.08) to none, 1400ms (portrait) / 2200ms (land bands)",
+        "purpose": "Photographs settle once."
+      },
+      {
+        "name": "page-turn",
+        "value": "view transition: out 220ms, in 380ms +60ms, 12px lift",
+        "purpose": "Route changes; header stays put."
+      },
+      {
+        "name": "reveal-failsafe",
+        "value": "3.5s",
+        "purpose": "CSS shows all reveal content if JavaScript never hydrates."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Every animation, transition, view transition and press scale is off."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ],
+    "textures": [
+      {
+        "name": "guilloche",
+        "value": "url(/textures/guilloche.svg) 560px repeat",
+        "purpose": "Engraved ruling on passport pages."
+      },
+      {
+        "name": "ink-grain",
+        "value": "mask url(/textures/ink-grain.png) 64px",
+        "purpose": "Ink grain on stamp frames and figures; never on small caption text."
+      }
+    ],
+    "duotone": {
+      "script": "scripts/duotone.py land",
+      "shadowInk": "#063c2b",
+      "highlightInk": "#e6c583",
+      "purpose": "Every photograph on the site; provenance in a CREDITS.md beside the files."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button (Donate)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Stamp-red block; Donate and the funding action only.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Donate <svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 9h11M10 4.5 14.5 9 10 13.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\"/></svg></a>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:10px; min-height:48px; padding:16px 28px; font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); font-weight:700; font-size:1.0625rem; line-height:1.25; color:var(--color-sand-50,#f8f4ec); background:var(--color-flag-red,#a52a1e); border-radius:var(--radius-control,0.25rem); text-decoration:none; transition: background-color 160ms cubic-bezier(0.25,1,0.5,1), transform 160ms cubic-bezier(0.25,1,0.5,1); } .ds-btn-primary svg { transition: transform 420ms cubic-bezier(0.25,1,0.5,1); } .ds-btn-primary:hover { background: color-mix(in oklab, #a52a1e 84%, #16130f); } .ds-btn-primary:hover svg { transform: translateX(2px); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 3px solid var(--color-flag-green, #0d6a4c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ink outline on a page; fills ink on hover.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Explore the record <svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 9h11M10 4.5 14.5 9 10 13.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\"/></svg></a>",
+      "css": ".ds-btn-secondary { display:inline-flex; align-items:center; gap:10px; min-height:48px; padding:14px 26px; font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); font-weight:700; font-size:1.0625rem; line-height:1.25; color:var(--color-ink-900,#16130f); background:transparent; border:2px solid var(--color-ink-900,#16130f); border-radius:var(--radius-control,0.25rem); text-decoration:none; transition: background-color 160ms, color 160ms, transform 160ms; } .ds-btn-secondary:hover { background:var(--color-ink-900,#16130f); color:var(--color-sand-50,#f8f4ec); } .ds-btn-secondary:active { transform: scale(0.98); } .ds-btn-secondary:focus-visible { outline: 3px solid var(--color-flag-green, #0d6a4c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Quiet Link Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Underlined bold text action in deep flag green.",
+      "html": "<a class=\"ds-btn-quiet\" href=\"#\">Read the full story</a>",
+      "css": ".ds-btn-quiet { display:inline-flex; align-items:center; min-height:44px; font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); font-weight:700; color:var(--color-flag-green-dark,#084a34); text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:0.3em; transition: color 160ms; } .ds-btn-quiet:hover { color:var(--color-ink-900,#16130f); } .ds-btn-quiet:focus-visible { outline: 3px solid var(--color-flag-green, #0d6a4c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Square-cornered sand field with an ink border, label above.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Phone number<span class=\"ds-req\">*</span></span><input class=\"ds-input\" placeholder=\"0712 345 678\"></label>",
+      "css": ".ds-field { display:block; font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); } .ds-field-label { display:block; margin-bottom:8px; font-weight:700; color:var(--color-ink-900,#16130f); } .ds-req { margin-left:2px; color:var(--color-flag-red,#a52a1e); } .ds-input { box-sizing:border-box; width:100%; min-height:48px; padding:0 14px; font:inherit; font-size:1.0625rem; color:var(--color-ink-900,#16130f); background:var(--color-sand-50,#f8f4ec); border:1.5px solid var(--color-ink-900,#16130f); border-radius:var(--radius-control,0.25rem); } .ds-input::placeholder { color:var(--color-ink-500,#6b6153); } .ds-input:focus-visible { outline:3px solid var(--color-flag-green,#0d6a4c); outline-offset:3px; }"
+    },
+    {
+      "name": "Language Toggle",
+      "kind": "chip",
+      "refersTo": "language-toggle-active",
+      "description": "EN / SW / SO segmented control; active segment is a solid ink block.",
+      "html": "<div class=\"ds-lang\" role=\"group\"><button aria-pressed=\"true\">EN</button><button aria-pressed=\"false\">SW</button><button aria-pressed=\"false\">SO</button></div>",
+      "css": ".ds-lang { display:inline-flex; padding:2px; border:1.5px solid var(--color-ink-900,#16130f); border-radius:var(--radius-control,0.25rem); font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); } .ds-lang button { height:40px; min-width:40px; padding:0 8px; font:inherit; font-size:0.875rem; font-weight:700; border:0; border-radius:2px; background:transparent; color:var(--color-ink-800,#221d17); cursor:pointer; transition: background-color 160ms; } .ds-lang button:hover { background: rgb(22 19 15 / 0.08); } .ds-lang button[aria-pressed=true] { background:var(--color-ink-900,#16130f); color:var(--color-sand-50,#f8f4ec); } .ds-lang button:focus-visible { outline:3px solid var(--color-flag-green,#0d6a4c); outline-offset:3px; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "cover",
+      "description": "Countdown strip on the cover above a sand bar with a 3px ink rule; current page underlined in flag green.",
+      "html": "<header class=\"ds-head\"><div class=\"ds-strip\"><span class=\"ds-days\">265</span> <b>Days</b></div><nav class=\"ds-nav\"><span class=\"ds-mark\">Mohamed Abdi Affey</span><a href=\"#\" aria-current=\"page\">The Story</a><a href=\"#\">Vision for Wajir</a><a href=\"#\">Record</a><a class=\"ds-donate\" href=\"#\">Donate</a></nav></header>",
+      "css": ".ds-head { font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); } .ds-strip { height:36px; display:flex; align-items:center; gap:8px; padding:0 16px; background:var(--color-flag-green-deep,#063c2b); color:var(--color-sand-50,#f8f4ec); font-size:0.875rem; } .ds-days { font-family: var(--font-display, Prata, Georgia, serif); font-weight: 400; font-size:1.25rem; color:var(--color-ochre-300,#e6c583); font-variant-numeric: tabular-nums lining-nums; } .ds-nav { display:flex; align-items:center; gap:4px; min-height:64px; padding:0 16px; background:var(--color-sand-50,#f8f4ec); border-bottom:3px solid var(--color-ink-900,#16130f); } .ds-mark { font-family: var(--font-display, Prata, Georgia, serif); font-weight: 400; font-size:1.3125rem; margin-right:auto; color:var(--color-ink-900,#16130f); } .ds-nav a { position:relative; padding:8px 10px; font-weight:700; font-size:0.9375rem; color:var(--color-ink-700,#362f26); text-decoration:none; transition: color 160ms; } .ds-nav a:hover { color:var(--color-ink-900,#16130f); } .ds-nav a[aria-current=page] { color:var(--color-flag-green-dark,#084a34); } .ds-nav a[aria-current=page]::after { content:''; position:absolute; left:12px; right:12px; bottom:-15px; height:3px; background:var(--color-flag-green,#0d6a4c); } .ds-nav a.ds-donate { margin-left:8px; padding:0 20px; min-height:44px; display:inline-flex; align-items:center; background:var(--color-flag-red,#a52a1e); color:var(--color-sand-50,#f8f4ec); border-radius:var(--radius-control,0.25rem); } .ds-nav a:focus-visible { outline:3px solid var(--color-flag-green,#0d6a4c); outline-offset:3px; }"
+    },
+    {
+      "name": "Entry Stamp",
+      "kind": "custom",
+      "refersTo": "stamp-red",
+      "description": "The signature mark: a tilted rubber-stamp frame in red or green ink, pressed on once as it enters view.",
+      "html": "<div class=\"ds-stamp\"><span class=\"ds-stamp-fig\">1997</span><span class=\"ds-stamp-cap\">Elected MP at age 27</span></div><div class=\"ds-stamp ds-stamp-green\" style=\"--tilt:3deg\"><span class=\"ds-stamp-fig\">2003</span><span class=\"ds-stamp-cap\">Kenya's Ambassador to Somalia</span></div>",
+      "css": ".ds-stamp { position:relative; display:inline-flex; flex-direction:column; margin:16px; padding:12px 20px 16px; color:var(--color-flag-red,#a52a1e); border:3px solid currentColor; border-radius:var(--radius-stamp,0.625rem); transform:rotate(var(--tilt,-4deg)); font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); transition: transform 520ms cubic-bezier(0.16,1,0.3,1); } .ds-stamp-green { color:var(--color-flag-green,#0d6a4c); } .ds-stamp-fig { font-family: var(--font-display, Prata, Georgia, serif); font-weight: 400; font-size:clamp(1.875rem,1.4rem + 2.1vw,3.25rem); line-height:1; padding-bottom:4px; border-bottom:2px solid currentColor; font-variant-numeric: tabular-nums lining-nums; } .ds-stamp-cap { margin-top:8px; max-width:17ch; font-size:0.9375rem; font-weight:700; line-height:1.375; } .ds-stamp:hover { transform: rotate(var(--tilt,-4deg)) scale(1.02); } @media (prefers-reduced-motion: reduce) { .ds-stamp { transition:none; } .ds-stamp:hover { transform: rotate(var(--tilt,-4deg)); } }"
+    },
+    {
+      "name": "Status Mark",
+      "kind": "chip",
+      "refersTo": "status-mark",
+      "description": "A small ruled ink annotation marking content as verified, draft or to be confirmed.",
+      "html": "<span class=\"ds-status ds-verified\">Verified</span> <span class=\"ds-status ds-draft\">Draft — for approval</span> <span class=\"ds-status ds-tbc\">To confirm</span>",
+      "css": ".ds-status { display:inline-flex; align-items:center; padding:2px 8px; border:1.5px solid currentColor; border-radius:2px; font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); font-size:0.8125rem; font-weight:700; line-height:1.25; } .ds-verified { color:var(--color-flag-green-dark,#084a34); } .ds-draft { color:var(--color-ochre-700,#7a5218); } .ds-tbc { color:var(--color-flag-red,#a52a1e); }"
+    },
+    {
+      "name": "Passport Page Section Head",
+      "kind": "card",
+      "refersTo": "passport-page",
+      "description": "A sand page with guilloché ruling; the section label in the desktop margin column, the heading in the main column.",
+      "html": "<section class=\"ds-page\"><p class=\"ds-margin\">A vision for Wajir</p><div><h2 class=\"ds-h2\">Experience earned at the world's tables, put to work at home.</h2><p class=\"ds-lead\">Draft priorities shown for direction.</p></div></section>",
+      "css": ".ds-page { display:grid; grid-template-columns: minmax(0,1fr) minmax(0,3fr); gap:12px 40px; padding:40px; background:var(--color-sand-50,#f8f4ec); color:var(--color-ink-900,#16130f); border-radius:var(--radius-page,1rem); } .ds-margin { margin:0; padding-top:12px; font-family: var(--font-display, Prata, Georgia, serif); font-weight: 400; font-size:1.3rem; color:var(--color-ochre-700,#7a5218); } .ds-h2 { margin:0; font-family: var(--font-display, Prata, Georgia, serif); font-weight: 400; font-size:clamp(1.875rem,1.4rem + 2.1vw,3.25rem); line-height:1.06; letter-spacing:-0.015em; text-wrap:balance; max-width:34ch; } .ds-lead { margin:20px 0 0; font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); font-size:1.3rem; line-height:1.42; color:var(--color-ink-600,#4f463a); max-width:40rem; } @media (max-width: 1023px) { .ds-page { grid-template-columns: 1fr; } .ds-margin { display:none; } }"
+    },
+    {
+      "name": "Countdown",
+      "kind": "custom",
+      "refersTo": "cover",
+      "description": "The validity line: days, hours, minutes in Prata tabular figures.",
+      "html": "<dl class=\"ds-cd\"><div><dd>265</dd><dt>Days</dt></div><div><dd>15</dd><dt>Hours</dt></div><div><dd>46</dd><dt>Minutes</dt></div></dl>",
+      "css": ".ds-cd { display:flex; gap:24px; margin:0; padding:20px; background:var(--color-sand-100,#f1ebdf); } .ds-cd div { display:flex; align-items:baseline; gap:10px; } .ds-cd dd { margin:0; font-family: var(--font-display, Prata, Georgia, serif); font-weight: 400; font-size:2.75rem; line-height:1; color:var(--color-ink-900,#16130f); font-variant-numeric: tabular-nums lining-nums; } .ds-cd dt { font-family: var(--font-sans, 'Atkinson Hyperlegible Next', system-ui, sans-serif); font-size:0.875rem; font-weight:700; color:var(--color-ink-600,#4f463a); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Envoy's Passport",
+    "overview": "The site is a passport laid open on the land of Wajir. A deep flag-green cover board holds sand-coloured pages; the pages carry a fine engraved guilloché ruling, ink type, and the candidate's record pressed onto them as rubber entry stamps in red and green ink. Every photograph, of the county and of the man, is printed in the cover's two inks, green and ochre, so the land and the candidate belong to the same document.\n\nThe world is flat and printed, not lit. Depth comes from the cover and the page, never from shadows: sand pages sit on green, and green bands interrupt sand. The type is a pairing of two voices: Prata, an engraved high-contrast serif, prints the name, headings, dates and figures; Atkinson Hyperlegible Next, built for low-vision readers, carries everything people actually read, at 17px so it holds up outdoors on a small phone. Density is generous and editorial: wide section spacing, a margin column for section labels on desktop, a 40rem reading measure.\n\nMotion is calm and happens once. Stamps press onto the page as they scroll into view, headline lines rise out of masks, land photographs settle. Nothing loops, everything uses transform and opacity, and all of it is gone under reduced motion. The first viewport never waits for JavaScript.",
+    "keyCharacteristics": [
+      "Deep-green cover board, sand passport pages with guilloché ruling, ink text.",
+      "Rubber entry stamps (red or green ink, rotated a few degrees, ink-grain mask) as the signature mark.",
+      "Two typefaces only: Prata for display and figures, Atkinson Hyperlegible Next for text.",
+      "Every photograph a green/ochre duotone plate, set square into the page.",
+      "Flat surfaces: no shadows anywhere; depth is cover versus page.",
+      "Square-cornered controls, small book radius on pages, soft radius on stamps.",
+      "Tabular lining figures for every date, count and amount."
+    ],
+    "rules": [
+      {
+        "name": "The Colour Lock Rule",
+        "body": "Only the tokens in `src/styles/tokens.css`. Tints, shades and alpha variants of them may be derived; a new hue may not. Component code references tokens, never a raw colour value (the one exception is `themeColor` metadata, which cannot read CSS).",
+        "section": "colors"
+      },
+      {
+        "name": "The Red Ink Rule",
+        "body": "Flag red is for Donate and for stamps. It is never a decorative accent, a heading colour or a generic link colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ochre Is For Figures Rule",
+        "body": "Ochre carries dates, counts and margin labels; ochre-700 on sand, ochre-300 on the cover. It is never body text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Faces Rule",
+        "body": "Prata and Atkinson Hyperlegible Next, nothing else. No monospace, not even for numbers or codes; figures are Prata or Atkinson with tabular lining numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Every `time` element and anything marked tabular uses `tabular-nums lining-nums`, and changing figures sit in fixed-width slots so nothing shifts.",
+        "section": "typography"
+      },
+      {
+        "name": "The Margin Label Rule",
+        "body": "A section's label lives in the desktop margin column, in Prata at title size, in ochre. On phones it is not shown. Nothing small, uppercase or tracked ever sits above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Printed Matter Rule",
+        "body": "Nothing floats. Pages lie on the cover, plates are set into the page, stamps are pressed onto it. If something needs separation, change the surface tone or draw a rule; never add a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use only the tokens in `src/styles/tokens.css`; derive tints, shades or alpha from them when needed (ochre-700 is the precedent) and record the derivation beside the token.",
+      "**Do** reserve flag red for Donate and for stamps.",
+      "**Do** set the name, headings, dates and figures in Prata 400, and everything people read in Atkinson Hyperlegible Next at 17px or larger (small print floor 13px).",
+      "**Do** put section labels in the desktop margin column, in Prata at title size, ochre; hide them on phones.",
+      "**Do** print every photograph through `scripts/duotone.py land` (flag-green-deep to ochre-300) and record its provenance and licence in a CREDITS.md beside it.",
+      "**Do** animate only transform and opacity, once, with calm ease-out curves (160ms, 420ms, 640ms), and turn all of it off under `prefers-reduced-motion`.",
+      "**Do** keep first-viewport content visible without JavaScript: entrances there run from CSS, and scroll reveals have a CSS failsafe that shows everything after 3.5s.",
+      "**Do** use tabular lining figures in fixed-width slots for dates, counts and money.",
+      "**Do** keep controls square-cornered (4px) with 44px minimum touch targets."
+    ],
+    "donts": [
+      "**Don't** add a hue, a raw hex value in component code, or a gradient.",
+      "**Don't** use a third typeface or any monospace.",
+      "**Don't** place an eyebrow (a small, uppercase or tracked label) above a heading.",
+      "**Don't** use red for decoration, headings or ordinary links.",
+      "**Don't** show a full-colour or unprocessed photograph, or present the Wajir county photographs as campaign events.",
+      "**Don't** add box shadows, glows or floating cards; depth is cover versus page.",
+      "**Don't** loop, pulse or bounce anything, or animate layout properties.",
+      "**Don't** change locked copy to fit a layout; change the layout."
+    ]
+  }
+}
